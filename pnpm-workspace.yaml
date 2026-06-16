@@ -2,6 +2,17 @@ packages:
   - "packages/*"
   - "apps/*"
 
+allowBuilds:
+  '@parcel/watcher': true
+  electron-winstaller: true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+
+minimumReleaseAgeExclude:
+  - '@bluehalo/ngx-leaflet@22.0.0'
+  - electron@42.4.1
+
 # pnpm v10+ requires explicit approval for dependency build scripts.
 # These are the native/build-step deps used across the workspace.
 onlyBuiltDependencies:
