@@ -1,0 +1,28 @@
+{
+  "name": "@fusiondeck/server",
+  "version": "0.0.0",
+  "description": "Central community API for FusionDeck — hosts @fusiondeck/core with Node adapters (undici, fs cache, pino).",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rimraf dist .turbo .cache"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "@fusiondeck/core": "workspace:*",
+    "fastify": "^5.8.5",
+    "pino": "^10.3.1",
+    "undici": "^8.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "vitest": "^4.1.9"
+  }
+}

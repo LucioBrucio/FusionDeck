@@ -1,0 +1,10 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+
+# pnpm v10+ requires explicit approval for dependency build scripts.
+# These are the native/build-step deps used across the workspace.
+onlyBuiltDependencies:
+  - electron
+  - esbuild
+  - "@parcel/watcher"

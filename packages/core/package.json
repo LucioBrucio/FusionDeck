@@ -1,0 +1,26 @@
+{
+  "name": "@fusiondeck/core",
+  "version": "0.0.0",
+  "description": "Isomorphic domain core for FusionDeck — discovery sources, normalization, caching, hexagonal ports. Zero host-specific dependencies.",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rimraf dist .turbo"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.9"
+  }
+}

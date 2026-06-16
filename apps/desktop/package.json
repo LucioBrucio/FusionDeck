@@ -1,0 +1,24 @@
+{
+  "name": "@fusiondeck/desktop",
+  "version": "0.0.0",
+  "description": "FusionDeck desktop app (Electron) — hosts the UI, embeds core as local fallback, bridges the SD card.",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json && FUSIONDECK_DEV=1 electron .",
+    "start": "electron .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rimraf dist .turbo release",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "@fusiondeck/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  }
+}

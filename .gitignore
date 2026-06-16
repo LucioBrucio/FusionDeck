@@ -141,3 +141,17 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# ---- FusionDeck ----
+# Turborepo
+.turbo/
+# Angular build cache
+.angular/
+# TypeScript composite build output
+dist/out-tsc/
+# Server filesystem cache (LocalProvider)
+packages/server/.cache/
+# Electron packaging output
+apps/desktop/release/
+# macOS
+.DS_Store

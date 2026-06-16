@@ -1,0 +1,17 @@
+# Starter packaging config. The UI build (@fusiondeck/ui dist) must be copied
+# into the bundle before `pnpm --filter @fusiondeck/desktop dist` — wiring that
+# copy step is a Fase 0+ task. Signing/notarization (§6.1) comes later.
+appId: io.github.luciobrucio.fusiondeck
+productName: FusionDeck
+directories:
+  output: release
+files:
+  - dist/**
+mac:
+  category: public.app-category.utilities
+win:
+  target: nsis
+linux:
+  target:
+    - AppImage
+    - deb
