@@ -14,10 +14,20 @@ export interface ServerConfig {
  */
 export function buildDiscovery(config: ServerConfig): DiscoveryProvider {
   const clock = new SystemClock();
-  return new LocalProvider({
-    http: new UndiciHttpClient(),
-    cache: new FsCacheStore(config.cacheDir, clock),
-    clock,
-    log: new PinoLogger(),
-  });
+  return new LocalProvider(
+    {
+      http: new UndiciHttpClient(),
+      cache: new FsCacheStore(config.cacheDir, clock),
+      clock,
+      log: new PinoLogger(),
+    },
+    {
+      // RepeaterBook gates its API behind an approved token (see adapter).
+      repeaterBook: {
+        country: process.env.REPEATERBOOK_COUNTRY ?? 'Italy',
+        appToken: process.env.REPEATERBOOK_TOKEN,
+        userAgent: process.env.REPEATERBOOK_UA,
+      },
+    },
+  );
 }

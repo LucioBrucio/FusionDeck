@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import type { FusionEntity } from '@fusiondeck/core';
+import type { FusionEntity, GeoArea } from '@fusiondeck/core';
 import { bandOf, formatMhz, isLive } from '../../core/channel.util';
 import { MemoryDeckStore } from '../../core/memory-deck.store';
 import { StationsStore } from '../../core/stations.store';
@@ -26,6 +26,11 @@ export class ExplorerComponent {
 
   protected onSelect(station: FusionEntity): void {
     this.selected.set(station);
+  }
+
+  /** Map settled on a new viewport — pull repeaters for that area (§4.1). */
+  protected onBounds(area: GeoArea): void {
+    this.stationsStore.load(area);
   }
 
   protected add(station: FusionEntity): void {

@@ -1,7 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import * as L from 'leaflet';
-import type { FusionEntity } from '@fusiondeck/core';
+import type { FusionEntity, GeoArea } from '@fusiondeck/core';
 import { isLive } from '../core/channel.util';
 
 /**
@@ -36,6 +36,8 @@ import { isLive } from '../core/channel.util';
 export class RepeaterMapComponent {
   readonly stations = input<FusionEntity[]>([]);
   readonly select = output<FusionEntity>();
+  /** Emitted on every map pan/zoom settle, so the host can load that area. */
+  readonly boundsChange = output<GeoArea>();
 
   readonly options: L.MapOptions = {
     layers: [
@@ -61,6 +63,15 @@ export class RepeaterMapComponent {
     if (points.length) {
       map.fitBounds(L.latLngBounds(points).pad(0.3));
     }
+    map.on('moveend', () => {
+      const b = map.getBounds();
+      this.boundsChange.emit({
+        north: b.getNorth(),
+        south: b.getSouth(),
+        east: b.getEast(),
+        west: b.getWest(),
+      });
+    });
   }
 
   private toMarker(station: FusionEntity): L.CircleMarker {

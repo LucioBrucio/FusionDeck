@@ -7,13 +7,17 @@ import type {
   Room,
 } from '../domain/index.js';
 import type { SourceDeps } from '../sources/types.js';
-import { RepeaterBookSource } from '../sources/repeaterbook.js';
+import { RepeaterBookSource, type RepeaterBookOptions } from '../sources/repeaterbook.js';
 import { WiresXSource } from '../sources/wiresx.js';
 import { YsfDvRefSource } from '../sources/ysf-dvref.js';
 import { YsfDashboardSource } from '../sources/ysf-dashboard.js';
 import type { DiscoveryProvider } from './discovery-provider.js';
 
 export type LocalProviderDeps = SourceDeps;
+
+export interface LocalProviderConfig {
+  repeaterBook?: RepeaterBookOptions;
+}
 
 /**
  * Runs the same domain sources the server runs, embedded in-process. Used as
@@ -29,8 +33,8 @@ export class LocalProvider implements DiscoveryProvider {
   private readonly ysfRegistry: YsfDvRefSource;
   private readonly ysfDashboard: YsfDashboardSource;
 
-  constructor(deps: LocalProviderDeps) {
-    this.repeaterBook = new RepeaterBookSource(deps);
+  constructor(deps: LocalProviderDeps, config: LocalProviderConfig = {}) {
+    this.repeaterBook = new RepeaterBookSource(deps, config.repeaterBook);
     this.wiresX = new WiresXSource(deps);
     this.ysfRegistry = new YsfDvRefSource(deps);
     this.ysfDashboard = new YsfDashboardSource(deps);

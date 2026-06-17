@@ -12,7 +12,11 @@ export type { DiscoveryProvider } from './discovery/discovery-provider.js';
 export { DEFAULT_DISCOVERY_POLICY, type DiscoveryPolicy } from './discovery/policy.js';
 export { DiscoveryGateway, type DiscoveryGatewayDeps } from './discovery/discovery-gateway.js';
 export { RemoteProvider, type RemoteProviderOptions } from './discovery/remote-provider.js';
-export { LocalProvider, type LocalProviderDeps } from './discovery/local-provider.js';
+export {
+  LocalProvider,
+  type LocalProviderDeps,
+  type LocalProviderConfig,
+} from './discovery/local-provider.js';
 
 // Cache
 export { MemoryCacheStore } from './cache/memory-cache-store.js';

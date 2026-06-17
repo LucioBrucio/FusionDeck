@@ -1,4 +1,4 @@
-export { RepeaterBookSource } from './repeaterbook.js';
+export { RepeaterBookSource, type RepeaterBookOptions } from './repeaterbook.js';
 export { WiresXSource } from './wiresx.js';
 export { YsfDvRefSource } from './ysf-dvref.js';
 export { YsfDashboardSource } from './ysf-dashboard.js';

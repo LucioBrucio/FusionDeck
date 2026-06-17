@@ -5,6 +5,13 @@ import Fastify from 'fastify';
 import { buildDiscovery } from './composition-root.js';
 import { registerDiscoveryRoutes } from './routes/discovery.js';
 
+// Load packages/server/.env if present (RepeaterBook token, port, etc.).
+try {
+  process.loadEnvFile();
+} catch {
+  // No .env file — fall back to the ambient environment.
+}
+
 const PORT = Number(process.env.PORT ?? 8787);
 const HOST = process.env.HOST ?? '0.0.0.0';
 const here = dirname(fileURLToPath(import.meta.url));

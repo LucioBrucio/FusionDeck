@@ -1,5 +1,9 @@
 <div class="ex-map">
-  <fd-repeater-map [stations]="stations()" (select)="onSelect($event)" />
+  <fd-repeater-map
+    [stations]="stations()"
+    (select)="onSelect($event)"
+    (boundsChange)="onBounds($event)"
+  />
 </div>
 
 <aside class="ex-panel">
