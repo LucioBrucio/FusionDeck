@@ -1,0 +1,51 @@
+<aside class="wb-filters">
+  <div class="wb-h">Sources</div>
+  @for (net of networks; track net) {
+    <label class="wb-check">
+      <input type="checkbox" [checked]="selectedNetworks().has(net)" (change)="toggleNetwork(net)" />
+      {{ net }}
+    </label>
+  }
+</aside>
+
+<section class="wb-results">
+  <div class="wb-h">Results · {{ results().length }}</div>
+  <ul>
+    @for (s of results(); track s.id) {
+      <li class="wb-row">
+        <div>
+          <div class="wb-rn">{{ s.callsign ?? s.name }}</div>
+          <div class="wb-rs">{{ s.name }} · {{ s.network }}</div>
+        </div>
+        <button type="button" (click)="add(s)" aria-label="Add to deck">+</button>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="wb-grid">
+  <div class="wb-h">Memory deck · {{ deck.count() }}</div>
+  <div class="grid-head">
+    <span class="c-idx">#</span>
+    <span class="c-name">Name</span>
+    <span class="c-freq">RX</span>
+    <span class="c-freq">TX</span>
+    <span class="c-mode">Mode</span>
+    <span class="c-act"></span>
+  </div>
+
+  @if (deck.count() === 0) {
+    <div class="wb-empty">Add stations from the results list to build your channel list.</div>
+  } @else {
+    @for (ch of deck.channels(); track ch.index; let i = $index) {
+      <div class="grid-row">
+        <span class="c-idx">{{ ch.index }}</span>
+        <input class="c-name" [value]="ch.name" (input)="rename($event, i)" />
+        <span class="c-freq">{{ formatMhz(ch.rxFreqHz) }}</span>
+        <span class="c-freq">{{ formatMhz(ch.txFreqHz) }}</span>
+        <span class="c-mode">{{ ch.mode }}</span>
+        <button class="c-act" type="button" (click)="deck.removeAt(i)" aria-label="Remove">×</button>
+      </div>
+    }
+  }
+</section>

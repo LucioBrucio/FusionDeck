@@ -1,0 +1,160 @@
+:host {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.ex-map {
+  flex: 1.7;
+  min-width: 0;
+}
+
+.ex-panel {
+  flex: 1;
+  max-width: 380px;
+  min-width: 300px;
+  border-left: 1px solid var(--fd-border);
+  background: var(--fd-surface);
+  overflow: auto;
+}
+
+.ex-detail {
+  padding: 16px;
+  border-bottom: 1px solid var(--fd-border);
+}
+
+.ex-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ex-call {
+  font-size: 13px;
+  color: var(--fd-muted);
+  margin-top: 2px;
+}
+
+.ex-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--fd-accent-bg);
+  color: var(--fd-accent-text);
+}
+
+.chip.ghost,
+.chip.net {
+  background: var(--fd-surface-2);
+  color: var(--fd-muted);
+}
+
+.chip.net {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ex-live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fd-success);
+  margin-bottom: 12px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fd-success);
+  display: inline-block;
+}
+
+.ex-freq {
+  display: flex;
+  gap: 18px;
+  margin: 0 0 14px;
+}
+
+.ex-freq div {
+  display: flex;
+  flex-direction: column;
+}
+
+.ex-freq dt {
+  font-size: 11px;
+  color: var(--fd-faint);
+}
+
+.ex-freq dd {
+  margin: 0;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ex-add {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid var(--fd-accent);
+  background: var(--fd-accent-bg);
+  color: var(--fd-accent-text);
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ex-empty {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--fd-muted);
+  border-bottom: 1px solid var(--fd-border);
+}
+
+.ex-deckwrap {
+  padding: 14px 16px;
+}
+
+.ex-deckhead {
+  font-size: 12px;
+  color: var(--fd-muted);
+  margin-bottom: 8px;
+}
+
+.ex-deckempty {
+  font-size: 12px;
+  color: var(--fd-faint);
+}
+
+.ex-decklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.ex-decklist li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--fd-border);
+}
+
+.idx {
+  color: var(--fd-faint);
+  font-variant-numeric: tabular-nums;
+  width: 20px;
+}
+
+.mode {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--fd-muted);
+}

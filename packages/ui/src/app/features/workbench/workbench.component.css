@@ -1,0 +1,149 @@
+:host {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  font-size: 13px;
+}
+
+.wb-filters {
+  width: 200px;
+  flex: none;
+  border-right: 1px solid var(--fd-border);
+  background: var(--fd-surface);
+  padding: 14px;
+  overflow: auto;
+}
+
+.wb-h {
+  font-size: 12px;
+  color: var(--fd-muted);
+  margin-bottom: 10px;
+}
+
+.wb-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 12px;
+}
+
+.wb-results {
+  width: 280px;
+  flex: none;
+  border-right: 1px solid var(--fd-border);
+  overflow: auto;
+  padding: 14px;
+}
+
+.wb-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wb-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--fd-border);
+}
+
+.wb-rn {
+  font-weight: 500;
+}
+
+.wb-rs {
+  font-size: 11px;
+  color: var(--fd-muted);
+}
+
+.wb-row button {
+  margin-left: auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid var(--fd-border-2);
+  background: var(--fd-surface);
+  color: var(--fd-text);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.wb-grid {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: 14px;
+}
+
+.grid-head,
+.grid-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--fd-border);
+}
+
+.grid-head {
+  color: var(--fd-muted);
+  font-size: 12px;
+}
+
+.c-idx {
+  width: 28px;
+  color: var(--fd-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.c-name {
+  flex: 1;
+  min-width: 0;
+}
+
+input.c-name {
+  font: inherit;
+  color: var(--fd-text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+input.c-name:hover,
+input.c-name:focus {
+  border-color: var(--fd-border-2);
+  background: var(--fd-bg);
+  outline: none;
+}
+
+.c-freq {
+  width: 72px;
+  font-variant-numeric: tabular-nums;
+  color: var(--fd-muted);
+}
+
+.c-mode {
+  width: 54px;
+  font-size: 12px;
+}
+
+.c-act {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: var(--fd-faint);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.wb-empty {
+  font-size: 12px;
+  color: var(--fd-faint);
+  padding: 10px 0;
+}

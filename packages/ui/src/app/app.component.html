@@ -1,7 +1,24 @@
 <header class="fd-header">
-  <strong>{{ title }}</strong>
-  <span class="fd-tag">CHIRP for System Fusion</span>
+  <div class="fd-brand">
+    <span class="fd-logo" aria-hidden="true"></span>
+    FusionDeck
+  </div>
+
+  <nav class="fd-seg" role="tablist" aria-label="Layout">
+    <a routerLink="/explorer" routerLinkActive="active" role="tab">Explorer</a>
+    <a routerLink="/workbench" routerLinkActive="active" role="tab">Workbench</a>
+    <a routerLink="/live" routerLinkActive="active" role="tab">Live</a>
+  </nav>
+
+  <div class="fd-actions">
+    <button type="button" class="fd-kbd" title="Quick search — coming soon" aria-label="Quick search">
+      ⌘K
+    </button>
+    <span class="fd-deck" title="Channels staged for writing">Deck · {{ deck.count() }}</span>
+    <button type="button" class="fd-write" [disabled]="deck.count() === 0">Write to radio</button>
+  </div>
 </header>
+
 <main class="fd-main">
   <router-outlet />
 </main>

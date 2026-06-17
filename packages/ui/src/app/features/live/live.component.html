@@ -1,0 +1,31 @@
+<div class="live-strip">
+  <div class="live-h">Live now <fd-network-badge /></div>
+  <div class="live-cards">
+    @if (live().length === 0) {
+      <div class="live-empty">No network activity reported right now.</div>
+    } @else {
+      @for (s of live(); track s.id) {
+        <article class="live-card">
+          <div class="lc-top"><span class="dot"></span> {{ s.name }}</div>
+          <div class="lc-sub">{{ lastCall(s) }} · TXing</div>
+          <button type="button" (click)="add(s)">+ memory</button>
+        </article>
+      }
+    }
+  </div>
+</div>
+
+<div class="live-body">
+  <div class="live-map">
+    <fd-repeater-map [stations]="stations()" (select)="add($event)" />
+  </div>
+  <aside class="live-hot">
+    <div class="live-h">Hot list</div>
+    @for (s of hotList(); track s.id) {
+      <div class="hot-row">
+        <div class="hot-top"><span>{{ s.name }}</span><span class="hot-n">{{ s.connectedCount }}</span></div>
+        <div class="hot-bar"><span [style.width]="barWidth(s)"></span></div>
+      </div>
+    }
+  </aside>
+</div>

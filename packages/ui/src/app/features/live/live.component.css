@@ -1,0 +1,150 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* --- "Live now" strip --- */
+.live-strip {
+  flex: none;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--fd-border);
+  background: var(--fd-surface);
+}
+
+.live-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fd-muted);
+  margin-bottom: 10px;
+}
+
+.live-cards {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.live-empty {
+  font-size: 12px;
+  color: var(--fd-faint);
+}
+
+.live-card {
+  flex: none;
+  width: 190px;
+  padding: 10px 12px;
+  border: 1px solid var(--fd-border);
+  border-left: 3px solid var(--fd-success);
+  border-radius: var(--fd-radius);
+  background: var(--fd-bg);
+}
+
+.lc-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.lc-sub {
+  font-size: 11px;
+  color: var(--fd-muted);
+  margin: 4px 0 10px;
+}
+
+.live-card button {
+  width: 100%;
+  padding: 6px;
+  font-size: 12px;
+  color: var(--fd-accent-text);
+  background: var(--fd-accent-bg);
+  border: 1px solid var(--fd-accent);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fd-success);
+  display: inline-block;
+  animation: fd-pulse 1.8s infinite;
+}
+
+@keyframes fd-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--fd-success) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}
+
+/* --- Body: map + popularity hot list --- */
+.live-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.live-map {
+  flex: 1;
+  min-width: 0;
+}
+
+.live-hot {
+  width: 300px;
+  flex: none;
+  border-left: 1px solid var(--fd-border);
+  background: var(--fd-surface);
+  padding: 14px 16px;
+  overflow: auto;
+}
+
+.hot-row {
+  padding: 8px 0;
+}
+
+.hot-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.hot-n {
+  font-size: 12px;
+  color: var(--fd-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.hot-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--fd-surface-2);
+  overflow: hidden;
+}
+
+.hot-bar span {
+  display: block;
+  height: 100%;
+  background: var(--fd-accent);
+  border-radius: 999px;
+}

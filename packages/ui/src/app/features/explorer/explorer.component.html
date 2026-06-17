@@ -1,0 +1,58 @@
+<div class="ex-map">
+  <fd-repeater-map [stations]="stations()" (select)="onSelect($event)" />
+</div>
+
+<aside class="ex-panel">
+  @if (selected(); as s) {
+    <section class="ex-detail">
+      <div class="ex-name">{{ s.name }}</div>
+      @if (s.callsign) {
+        <div class="ex-call">{{ s.callsign }}</div>
+      }
+
+      <div class="ex-chips">
+        @if (s.linkedFreq?.mode; as mode) {
+          <span class="chip">{{ mode }}</span>
+        }
+        @if (bandOf(s.linkedFreq?.rxFreqHz ?? 0)) {
+          <span class="chip ghost">{{ bandOf(s.linkedFreq?.rxFreqHz ?? 0) }}</span>
+        }
+        <span class="chip net">{{ s.network }}</span>
+      </div>
+
+      @if (isLive(s)) {
+        <div class="ex-live">
+          <span class="dot"></span> last heard {{ lastCall(s) }}
+          <fd-network-badge />
+        </div>
+      }
+
+      <dl class="ex-freq">
+        <div><dt>RX</dt><dd>{{ formatMhz(s.linkedFreq?.rxFreqHz ?? 0) }}</dd></div>
+        <div><dt>TX</dt><dd>{{ formatMhz(s.linkedFreq?.txFreqHz ?? 0) }}</dd></div>
+      </dl>
+
+      <button type="button" class="ex-add" (click)="add(s)">+ Add to memory</button>
+    </section>
+  } @else {
+    <div class="ex-empty">
+      Select a station on the map to see its details and add it to your memory deck.
+    </div>
+  }
+
+  <section class="ex-deckwrap">
+    <div class="ex-deckhead">Memory deck · {{ deck.count() }}</div>
+    @if (deck.count() === 0) {
+      <div class="ex-deckempty">Nothing staged yet.</div>
+    } @else {
+      <ul class="ex-decklist">
+        @for (ch of deck.channels(); track ch.index) {
+          <li>
+            <span class="idx">{{ ch.index }}</span> {{ ch.name }}
+            <span class="mode">{{ ch.mode }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</aside>

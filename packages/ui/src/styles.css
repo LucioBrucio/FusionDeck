@@ -1,5 +1,37 @@
 :root {
-  color-scheme: light dark;
+  --fd-bg: #f6f6f4;
+  --fd-surface: #ffffff;
+  --fd-surface-2: #efeee9;
+  --fd-border: rgba(0, 0, 0, 0.12);
+  --fd-border-2: rgba(0, 0, 0, 0.2);
+  --fd-text: #1c1c1a;
+  --fd-muted: #5f5e5a;
+  --fd-faint: #8a8980;
+  --fd-accent: #185fa5;
+  --fd-accent-bg: #e6f1fb;
+  --fd-accent-text: #0c447c;
+  --fd-success: #0f6e56;
+  --fd-success-bg: #e1f5ee;
+  --fd-radius: 8px;
+  --fd-radius-lg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fd-bg: #1b1b19;
+    --fd-surface: #242422;
+    --fd-surface-2: #2d2d2a;
+    --fd-border: rgba(255, 255, 255, 0.14);
+    --fd-border-2: rgba(255, 255, 255, 0.24);
+    --fd-text: #ececea;
+    --fd-muted: #b4b2a9;
+    --fd-faint: #888780;
+    --fd-accent: #85b7eb;
+    --fd-accent-bg: #0c447c;
+    --fd-accent-text: #b5d4f4;
+    --fd-success: #5dcaa5;
+    --fd-success-bg: #085041;
+  }
 }
 
 * {
@@ -11,4 +43,6 @@ body {
   height: 100%;
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--fd-bg);
+  color: var(--fd-text);
 }
